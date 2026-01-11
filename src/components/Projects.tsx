@@ -7,39 +7,46 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Event App',
+      description: 'Full-stack event management application enabling users to create, manage, and RSVP to events with real-time updates and notifications.',
+      tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Firebase'],
+      github: 'https://github.com/RUTHVIKMATURU/eventApp',
+      demo: '',
+    },
+    {
       title: 'Blog Web App',
       description: 'Full-stack blogging platform with real-time data synchronization, featuring secure user authentication and a rich-text editor for seamless content creation.',
       tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Firebase'],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/RUTHVIKMATURU/BlogApp',
+      demo: '',
     },
     {
       title: 'Campus Career Connect',
       description: 'Peer-to-peer mentorship platform implementing user profiles, secure messaging, and searchable mentor directory to connect junior and senior students.',
       tech: ['MERN Stack', 'Firebase', 'WebSocket'],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/RUTHVIKMATURU/campus-connect',
+      demo: '',
     },
     {
       title: 'Hostel Management System',
       description: 'Comprehensive portal digitizing hostel administration for 2000+ residents, automating room allocation, fee processing, and complaint resolution.',
       tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/RUTHVIKMATURU/hostel-management-system',
+      demo: 'https://hostel-management-system-vert.vercel.app/',
     },
     {
       title: 'Movie Matrix DBMS',
       description: 'Relational database system managing large-scale movie datasets with normalized schema, complex SQL queries, and optimized indexing for efficient retrieval.',
       tech: ['SQL', 'MySQL', 'Database Design'],
       github: '#',
-      demo: '#',
+      demo: '',
     },
     {
       title: 'Course Registration App',
       description: 'Standalone desktop application using pure Java AWT, demonstrating core GUI principles with robust event handling and JDBC for persistent data storage.',
       tech: ['Java', 'AWT', 'JDBC', 'MySQL'],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/RUTHVIKMATURU/javaAWT',
+      demo: '',
     },
   ];
 
@@ -93,6 +100,7 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-4">
+
                   <motion.a
                     href={project.github}
                     whileHover={{ scale: 1.05 }}
@@ -102,15 +110,17 @@ const Projects = () => {
                     <Github size={16} />
                     Code
                   </motion.a>
-                  <motion.a
-                    href={project.demo}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border-2 border-yellow-400 rounded-lg text-white font-semibold text-sm hover:border-orange-500 transition-colors duration-300"
-                  >
+                  {project.demo && (
+                    <motion.a
+                      href={project.demo}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-4 py-2 border-2 border-yellow-400 rounded-lg text-white font-semibold text-sm hover:border-orange-500 transition-colors duration-300"
+                    >
                     <ExternalLink size={16} />
                     Demo
                   </motion.a>
+                  )}
                 </div>
               </div>
 

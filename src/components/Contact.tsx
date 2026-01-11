@@ -40,8 +40,8 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, link: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, link: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Github, link: 'https://github.com/RUTHVIKMATURU', label: 'GitHub' },
+    { icon: Linkedin, link: 'https://www.linkedin.com/in/ruthvik-maturu-86545228b/', label: 'LinkedIn' },
     { icon: Mail, link: 'mailto:ruthvik0811@gmail.com', label: 'Email' },
   ];
 

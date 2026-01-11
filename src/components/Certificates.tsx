@@ -6,15 +6,16 @@ const Certificates = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const certificates = [
+    
     {
       name: 'MERN Stack Development',
-      organization: 'Udemy',
+      organization: 'VNRVJIET',
       date: '2024',
       description: 'Full-stack web development with MongoDB, Express, React, and Node.js',
     },
     {
       name: 'Data Visualization with Tableau',
-      organization: 'Coursera',
+      organization: 'Udemy',
       date: '2024',
       description: 'Advanced data visualization and dashboard creation',
     },
@@ -32,16 +33,22 @@ const Certificates = () => {
     },
     {
       name: '27th Rank - Top 100 Coders 2k24',
-      organization: 'CodeChef',
+      organization: 'Krithomedh',
       date: '2024',
-      description: 'National level coding competition',
+      description: 'College level coding competition',
     },
     {
       name: '12th Rank - Turing Cup 2k25',
-      organization: 'College Competition',
+      organization: 'Inter College Competition',
       date: '2025',
       description: 'Inter-college programming contest',
     },
+    {
+      name: '2nd Rank - Codeverse 2k25',
+      organization: 'Turing Hut',
+      date: '2025',
+      description: 'College level coding competition',
+    }
   ];
 
   return (

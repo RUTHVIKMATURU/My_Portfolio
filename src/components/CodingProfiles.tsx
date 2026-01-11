@@ -10,24 +10,24 @@ const CodingProfiles = () => {
       name: 'LeetCode',
       icon: Code2,
       stats: '350+ Problems',
-      rating: 'Max Rating: 1880',
-      link: 'https://leetcode.com',
+      rating: 'Max Rating: 1967',
+      link: 'https://leetcode.com/u/ruthvik0811',
       color: 'from-yellow-400 to-orange-500',
     },
     {
       name: 'CodeChef',
       icon: Trophy,
       stats: '500+ Problems',
-      rating: 'Max Rating: 1739',
-      link: 'https://codechef.com',
+      rating: 'Max Rating: 1815',
+      link: 'https://codechef.com/users/ruthvik0811',
       color: 'from-orange-500 to-red-500',
     },
     {
       name: 'Codeforces',
       icon: TrendingUp,
       stats: '350+ Problems',
-      rating: 'Max Rating: 1364',
-      link: 'https://codeforces.com',
+      rating: 'Max Rating: 1415',
+      link: 'https://codeforces.com/profile/ruthvik0811',
       color: 'from-yellow-400 to-yellow-600',
     },
     {
@@ -35,7 +35,7 @@ const CodingProfiles = () => {
       icon: Code2,
       stats: 'Multiple Projects',
       rating: 'Open Source',
-      link: 'https://github.com',
+      link: 'https://github.com/RUTHVIKMATURU',
       color: 'from-gray-400 to-gray-600',
     },
   ];
@@ -144,7 +144,15 @@ const CodingProfiles = () => {
             >
               <div className="text-4xl font-bold text-gradient mb-2">11th</div>
               <p className="text-white font-semibold mb-1">Top 100 Coders 2k25</p>
-              <p className="text-gray-400 text-sm">National Level</p>
+              <p className="text-gray-400 text-sm">College Level</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-lg"
+            >
+              <div className="text-4xl font-bold text-gradient mb-2">2nd</div>
+              <p className="text-white font-semibold mb-1">Codeverse 2k25</p>
+              <p className="text-gray-400 text-sm">College Level</p>
             </motion.div>
           </div>
         </motion.div>

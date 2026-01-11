@@ -8,6 +8,10 @@ const About = () => {
   const skills = [
     { name: 'Java', icon: Code2, category: 'Languages' },
     { name: 'Python', icon: Code2, category: 'Languages' },
+    { name: 'Flask', icon: Code2, category: 'Languages' },
+    { name: 'C++', icon: Code2, category: 'Languages' },
+    { name: 'C', icon: Code2, category: 'Languages' },
+    { name: 'DSA', icon: Code2, category: 'Algorithms' },
     { name: 'JavaScript', icon: Code2, category: 'Languages' },
     { name: 'SQL', icon: Database, category: 'Languages' },
     { name: 'React', icon: Wrench, category: 'Frameworks' },
