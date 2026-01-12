@@ -26,7 +26,7 @@ const Certificates = () => {
       description: 'Cloud computing fundamentals and GCP services',
     },
     {
-      name: '1st Place - Smart Interviews Leaderboard',
+      name: '1st Place - Smart Interviews',
       organization: 'VNRVJIET',
       date: '2024',
       description: 'Top performer in competitive programming challenge',
@@ -35,6 +35,12 @@ const Certificates = () => {
       name: '27th Rank - Top 100 Coders 2k24',
       organization: 'Krithomedh',
       date: '2024',
+      description: 'College level coding competition',
+    },
+    {
+      name: '11th Rank - Top 100 Coders 2k25',
+      organization: 'Krithomedh',
+      date: '2025',
       description: 'College level coding competition',
     },
     {
@@ -48,6 +54,12 @@ const Certificates = () => {
       organization: 'Turing Hut',
       date: '2025',
       description: 'College level coding competition',
+    },
+    {
+      name: '7th Rank - Coding Contest 2k25',
+      organization: 'Turing Hut',
+      date: '2025',
+      description: 'Inter College coding competition',
     }
   ];
 
