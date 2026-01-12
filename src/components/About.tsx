@@ -88,7 +88,7 @@ const About = () => {
                 <p className="text-sm text-gray-400">GPA</p>
               </div>
               <div className="glass-effect px-6 py-3 rounded-lg">
-                <p className="text-2xl font-bold text-gradient">1050+</p>
+                <p className="text-2xl font-bold text-gradient">1350+</p>
                 <p className="text-sm text-gray-400">Problems Solved</p>
               </div>
               <div className="glass-effect px-6 py-3 rounded-lg">
