@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, Calendar, Building2 } from 'lucide-react';
+import { Award, Building2 } from 'lucide-react';
+import { useState } from 'react';
 
 const Certificates = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const certificates = [
     
     {
@@ -14,16 +14,11 @@ const Certificates = () => {
       description: 'Full-stack web development with MongoDB, Express, React, and Node.js',
     },
     {
-      name: 'Data Visualization with Tableau',
-      organization: 'Udemy',
-      date: '2024',
-      description: 'Advanced data visualization and dashboard creation',
-    },
-    {
       name: 'Google Cloud Skills Boost',
       organization: 'Google Cloud',
       date: '2024',
       description: 'Cloud computing fundamentals and GCP services',
+      image:'src/assets/GoogleCloud.png'
     },
     {
       name: '1st Place - Smart Interviews',
@@ -48,6 +43,7 @@ const Certificates = () => {
       organization: 'Inter College Competition',
       date: '2025',
       description: 'Inter-college programming contest',
+      image:'src/assets/TuringCup2k25.png'
     },
     {
       name: '2nd Rank - Codeverse 2k25',
@@ -79,52 +75,61 @@ const Certificates = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certificates.map((cert, index) => (
+          {certificates.map((cert, index) => {
+          const [flipped, setFlipped] = useState(false);
+
+          return (
             <motion.div
               key={cert.name}
+              className="relative h-72 perspective cursor-pointer"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, rotateY: 5 }}
-              className="glass-effect rounded-xl p-6 group cursor-pointer relative overflow-hidden"
+              onClick={() => setFlipped(!flipped)}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg"
-                  >
-                    <Award className="w-6 h-6 text-black" />
-                  </motion.div>
-                  <span className="px-3 py-1 text-xs border border-yellow-400/50 rounded-full text-yellow-400">
-                    {cert.date}
-                  </span>
+                className="w-full h-full preserve-3d"
+                transition={{ duration: 0.7 }}
+                
+              >
+                {/* Front */}
+                {!flipped && <div className="absolute inset-0 glass-effect rounded-xl p-6 backface-hidden">
+                  <div className="flex justify-between mb-4">
+                    <div className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg">
+                      <Award className="w-6 h-6 text-black" />
+                    </div>
+                    <span className="px-3 py-3 text-xs border border-yellow-400/50 rounded text-yellow-400"> 
+                      {cert.date} 
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">{cert.name}</h3>
+                  <div className="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                    <Building2 size={14} />
+                    <span>{cert.organization}</span>
+                  </div>
+                  <p className="text-gray-500 text-sm">{cert.description}</p>
                 </div>
+                }
+                {/* Back */}
+                {flipped && <div className="absolute inset-0 glass-effect rounded-xl p-4 rotate-y-180 backface-hidden flex items-center justify-center">
+                  {cert.image ? (
+                    <div className="absolute inset-0 rotate-y-180 backface-hidden glass-effect rounded-xl p-4 flex items-center justify-center">
+                      <img
+                        src={cert.image}
+                        alt={cert.name}
+                        className="max-h-full object-contain rounded-lg"
+                      />
+                    </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-gradient transition-all duration-300 mb-2">
-                  {cert.name}
-                </h3>
-
-                <div className="flex items-center gap-2 text-gray-400 text-sm mb-3">
-                  <Building2 size={14} />
-                  <span>{cert.organization}</span>
+                  ) : (
+                    <p className="text-gray-400 text-sm">No Certificate Available</p>
+                  )}
                 </div>
-
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {cert.description}
-                </p>
-              </div>
-
-              <motion.div
-                className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"
-              />
+                }
+              </motion.div>
             </motion.div>
-          ))}
+          );
+        })}
         </div>
 
         <motion.div
