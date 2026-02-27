@@ -1,17 +1,48 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github } from 'lucide-react';
+import { useState } from 'react';
+import ProjectCard from './ProjectCard';
+import ProjectModal from './ProjectModal';
+
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  demo: string;
+  features: string[];
+}
 
 const Projects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const projects = [
+  const projects: Project[] = [
+    {
+      title: 'IntelliVision-AI',
+      description: 'Real-time AI system integrating YOLO (ONNX) and BLIP models for object detection and context-aware scene captioning with a FastAPI backend.',
+      tech: ['React', 'FastAPI', 'ONNX', 'MERN', 'AI/ML'],
+      github: 'https://github.com/RUTHVIKMATURU/IntelliVision-AI',
+      demo: '',
+      features: [
+        'Real-time object detection using YOLO ONNX models',
+        'Intelligent scene captioning with BLIP transformer',
+        'FastAPI backend for high-performance ML inference',
+        'Responsive React frontend with live camera integration'
+      ],
+    },
     {
       title: 'Event App',
       description: 'Full-stack event management application enabling users to create, manage, and RSVP to events with real-time updates and notifications.',
       tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Firebase'],
       github: 'https://github.com/RUTHVIKMATURU/eventApp',
       demo: '',
+      features: [
+        'User authentication with Firebase',
+        'Real-time event creation and RSVP tracking',
+        'Push notifications for event updates',
+        'Interactive event discovery dashboard'
+      ],
     },
     {
       title: 'Blog Web App',
@@ -19,6 +50,12 @@ const Projects = () => {
       tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Firebase'],
       github: 'https://github.com/RUTHVIKMATURU/BlogApp',
       demo: '',
+      features: [
+        'Rich-text editing for content creation',
+        'Real-time database synchronization',
+        'User profiles and comment systems',
+        'SEO optimized blog post routing'
+      ],
     },
     {
       title: 'Campus Career Connect',
@@ -26,6 +63,12 @@ const Projects = () => {
       tech: ['MERN Stack', 'Firebase', 'WebSocket'],
       github: 'https://github.com/RUTHVIKMATURU/campus-connect',
       demo: '',
+      features: [
+        'Real-time messaging via WebSockets',
+        'Mentor/Mentee matching algorithm',
+        'Vetted student profile verification',
+        'Searchable directory with filter capabilities'
+      ],
     },
     {
       title: 'Hostel Management System',
@@ -33,6 +76,12 @@ const Projects = () => {
       tech: ['MongoDB', 'Express', 'React', 'Node.js'],
       github: 'https://github.com/RUTHVIKMATURU/hostel-management-system',
       demo: 'https://hostel-management-system-vert.vercel.app/',
+      features: [
+        'Automated room allocation logic',
+        'Digital fee payment and tracking',
+        'Complaint management system with status updates',
+        'Admin dashboard for resident analytics'
+      ],
     },
     {
       title: 'Movie Matrix DBMS',
@@ -40,6 +89,12 @@ const Projects = () => {
       tech: ['SQL', 'MySQL', 'Database Design'],
       github: '#',
       demo: '',
+      features: [
+        '3NF normalized relational schema',
+        'Optimized SQL queries for large datasets',
+        'User management and review tracking',
+        'Complex joins for movie recommendation logic'
+      ],
     },
     {
       title: 'Course Registration App',
@@ -47,6 +102,12 @@ const Projects = () => {
       tech: ['Java', 'AWT', 'JDBC', 'MySQL'],
       github: 'https://github.com/RUTHVIKMATURU/javaAWT',
       demo: '',
+      features: [
+        'Pure Java AWT graphical interface',
+        'JDBC connection for MySQL reliability',
+        'Robust transaction management',
+        'Event-driven GUI architecture'
+      ],
     },
   ];
 
@@ -62,75 +123,28 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectCard
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="glass-effect rounded-xl p-6 group relative overflow-hidden"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white group-hover:text-gradient transition-all duration-300 mb-3">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-xs border border-yellow-400/50 rounded-full text-yellow-400 group-hover:border-orange-500 group-hover:text-orange-500 transition-all duration-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4">
-
-                  <motion.a
-                    href={project.github}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg text-black font-semibold text-sm"
-                  >
-                    <Github size={16} />
-                    Code
-                  </motion.a>
-                  {project.demo && (
-                    <motion.a
-                      href={project.demo}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 border-2 border-yellow-400 rounded-lg text-white font-semibold text-sm hover:border-orange-500 transition-colors duration-300"
-                    >
-                    <ExternalLink size={16} />
-                    Demo
-                  </motion.a>
-                  )}
-                </div>
-              </div>
-
-              <motion.div
-                className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"
-              />
-            </motion.div>
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

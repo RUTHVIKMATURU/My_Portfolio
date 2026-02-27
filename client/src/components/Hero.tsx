@@ -35,7 +35,7 @@ const Hero = () => {
         {particles.map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
@@ -64,9 +64,9 @@ const Hero = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient glow-text mb-4"
             animate={{
               textShadow: [
-                '0 0 20px rgba(255, 215, 0, 0.5)',
-                '0 0 40px rgba(255, 215, 0, 0.8)',
-                '0 0 20px rgba(255, 215, 0, 0.5)',
+                '0 0 20px rgba(34, 211, 238, 0.5)',
+                '0 0 40px rgba(34, 211, 238, 0.8)',
+                '0 0 20px rgba(34, 211, 238, 0.5)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -98,14 +98,14 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.a
-              href="/Ruthvik_Resume (2).pdf"
+              href="/RuthvikMaturu_23071A66A4_Resume.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg font-semibold text-black overflow-hidden"
+              className="group relative px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg font-semibold text-black overflow-hidden"
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
               <span className="relative flex items-center gap-2">
                 <Download size={20} />
@@ -117,7 +117,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-8 py-3 glass-effect rounded-lg font-semibold text-white border-2 border-yellow-400 hover:border-orange-500 transition-all duration-300"
+              className="group relative px-8 py-3 glass-effect rounded-lg font-semibold text-white border-2 border-cyan-400 hover:border-blue-500 transition-all duration-300"
             >
               <span className="flex items-center gap-2">
                 <Mail size={20} />
@@ -133,9 +133,9 @@ const Hero = () => {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-yellow-400 rounded-full flex justify-center">
+        <div className="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center">
           <motion.div
-            className="w-1 h-2 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full mt-2"
+            className="w-1 h-2 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full mt-2"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />

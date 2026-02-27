@@ -36,7 +36,7 @@ const About = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -50,13 +50,13 @@ const About = () => {
               <motion.div
                 animate={{
                   boxShadow: [
-                    '0 0 20px rgba(255, 215, 0, 0.5)',
-                    '0 0 40px rgba(255, 69, 0, 0.6)',
-                    '0 0 20px rgba(255, 215, 0, 0.5)',
+                    '0 0 20px rgba(34, 211, 238, 0.5)',
+                    '0 0 40px rgba(59, 130, 246, 0.6)',
+                    '0 0 20px rgba(34, 211, 238, 0.5)',
                   ],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="w-64 h-64 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-1"
+                className="w-64 h-64 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 p-1"
               >
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
                   <span className="text-8xl font-bold text-gradient">RM</span>
@@ -108,31 +108,49 @@ const About = () => {
           <h3 className="text-3xl font-bold text-center text-gradient mb-12">
             Technical Skills
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {skills.map((skill, index) => {
-              const Icon = skill.icon;
-              return (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: 0.8 + index * 0.05 }}
-                  whileHover={{ scale: 1.1, rotateY: 180 }}
-                  className="glass-effect p-6 rounded-lg text-center group cursor-pointer"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="inline-block mb-3"
-                  >
-                    <Icon className="w-8 h-8 text-yellow-400 group-hover:text-orange-500 transition-colors duration-300" />
-                  </motion.div>
-                  <p className="font-semibold text-white group-hover:text-gradient transition-all duration-300">
-                    {skill.name}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">{skill.category}</p>
-                </motion.div>
-              );
-            })}
+
+          <div className="flex flex-wrap justify-center gap-12">
+            {['Languages', 'Frameworks', 'Databases', 'Tools', 'Algorithms'].map((cat, catIdx) => (
+              <motion.div
+                key={cat}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.7 + catIdx * 0.1 }}
+                className="flex-1 min-w-[280px] max-w-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 rounded-lg bg-cyan-400/10 border border-cyan-400/20">
+                    {cat === 'Languages' && <Code2 className="w-5 h-5 text-cyan-400" />}
+                    {cat === 'Frameworks' && <Wrench className="w-5 h-5 text-cyan-400" />}
+                    {cat === 'Databases' && <Database className="w-5 h-5 text-cyan-400" />}
+                    {cat === 'Tools' && <Lightbulb className="w-5 h-5 text-cyan-400" />}
+                    {cat === 'Algorithms' && <Code2 className="w-5 h-5 text-cyan-400" />}
+                  </div>
+                  <h4 className="text-xl font-bold text-white">{cat}</h4>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {skills
+                    .filter(s => s.category === cat)
+                    .map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        whileHover={{
+                          scale: 1.05,
+                          translateY: -5,
+                          backgroundColor: 'rgba(34, 211, 238, 0.1)'
+                        }}
+                        className="glass-effect px-4 py-2 rounded-full flex items-center gap-2 group cursor-default transition-all duration-300"
+                      >
+                        <skill.icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                        <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                          {skill.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

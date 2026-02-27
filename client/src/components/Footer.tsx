@@ -5,8 +5,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-8 px-4 border-t border-yellow-400/20">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+    <footer className="relative py-8 px-4 border-t border-cyan-400/20">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -27,7 +27,7 @@ const Footer = () => {
                 ease: "easeInOut"
               }}
             >
-              <Heart className="w-4 h-4 text-orange-500 fill-orange-500" />
+              <Heart className="w-4 h-4 text-cyan-500 fill-cyan-500" />
             </motion.span>{' '}
             by Ruthvik Maturu
           </p>
