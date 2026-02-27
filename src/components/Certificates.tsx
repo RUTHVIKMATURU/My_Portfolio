@@ -27,7 +27,7 @@ const Certificates = () => {
       description: 'Domain expertise in cloud computing fundamentals, GCP services, and infrastructure management. Includes hands-on experience with Computing engine and Cloud Storage.',
       skills: ['GCP', 'Cloud Computing', 'IAM', 'Cloud Storage'],
       credentialId: 'GC-BOOST-2024-SRV',
-      image: 'src/assets/GoogleCloud.png',
+      image: '/certificates/GoogleCloud.png',
       category: 'Cloud'
     },
     {
@@ -37,7 +37,7 @@ const Certificates = () => {
       description: 'Technical excellence award as the top performer in a comprehensive competitive programming and problem-solving challenge among 500+ participants.',
       skills: ['Data Structures', 'Algorithms', 'Competitive Programming'],
       credentialId: 'SI-TOP-2024-VNR',
-      image: 'src/assets/smartInterviews.png',
+      image: '/certificates/smartInterviews.png',
       category: 'Competition'
     },
     {
@@ -65,7 +65,7 @@ const Certificates = () => {
       description: 'Competitive performance in a prestigious inter-college programming contest featuring advanced DSA challenges and teamwork.',
       skills: ['Advanced DSA', 'Team Coordination', 'Optimization'],
       credentialId: 'TC-2K25-VNR',
-      image: 'src/assets/TuringCup2k25.png',
+      image: '/certificates/TuringCup2k25.png',
       category: 'Competition'
     },
     {
@@ -75,7 +75,7 @@ const Certificates = () => {
       description: 'Secured a top-tier podium finish in a rigorous multi-stage coding competition organized by Turing Hut.',
       skills: ['Programming', 'Logic', 'Databases'],
       credentialId: 'TH-CV-2025-02',
-      image: 'src/assets/Codeverse.jpg',
+      image: '/certificates/Codeverse.jpg',
       category: 'Competition'
     },
     {
