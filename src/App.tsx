@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,11 +6,10 @@ import Certificates from './components/Certificates';
 import CodingProfiles from './components/CodingProfiles';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AdminMessages from './pages/AdminMessages';
 
-function Home() {
+function App() {
   return (
-    <>
+    <div className="min-h-screen bg-black">
       <Navbar />
       <Hero />
       <About />
@@ -20,20 +18,7 @@ function Home() {
       <CodingProfiles />
       <Contact />
       <Footer />
-    </>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <div className="min-h-screen bg-black">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin/messages" element={<AdminMessages />} />
-        </Routes>
-      </div>
-    </Router>
+    </div>
   );
 }
 

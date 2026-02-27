@@ -13,8 +13,9 @@ const CodingProfiles = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const API_BASE_URL = import.meta.env.VITE_API_URL || '';
       try {
-        const response = await fetch('http://localhost:5000/api/coding-profiles');
+        const response = await fetch(`${API_BASE_URL}/api/coding-profiles`);
         const json = await response.json();
         setData(json);
       } catch (err) {
