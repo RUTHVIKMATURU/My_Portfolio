@@ -43,10 +43,10 @@ const CertificateModal = ({ cert, onClose }: CertificateModalProps) => {
           <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
-        <div className={`relative z-10 ${cert.image ? 'grid lg:grid-cols-[1.2fr,0.8fr] gap-12' : 'max-w-2xl mx-auto text-center'}`}>
+        <div className={`relative z-10 ${cert.image ? 'grid lg:grid-cols-[1.2fr,0.8fr] gap-12' : 'max-w-2xl mx-auto text-left'}`}>
           {/* Left Side: Content */}
           <div className="space-y-8">
-            <div className={cert.image ? '' : 'flex flex-col items-center'}>
+            <div className="flex flex-col items-start">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -64,7 +64,7 @@ const CertificateModal = ({ cert, onClose }: CertificateModalProps) => {
                 {cert.name}
               </motion.h2>
 
-              <div className={`flex flex-wrap items-center gap-6 text-gray-400 text-sm ${cert.image ? '' : 'justify-center'}`}>
+              <div className="flex flex-wrap items-center gap-6 text-gray-400 text-sm justify-start">
                 <div className="flex items-center gap-2">
                   <div className="p-2 rounded-lg bg-blue-500/10">
                     <Award size={18} className="text-blue-500" />
@@ -111,15 +111,6 @@ const CertificateModal = ({ cert, onClose }: CertificateModalProps) => {
                 </div>
               </div>
 
-              {cert.credentialId && (
-                <div className="p-4 rounded-xl bg-black/40 border border-white/5 flex items-center justify-between group overflow-hidden relative">
-                  <div className="relative z-10">
-                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Credential ID</p>
-                    <p className="text-sm font-mono text-white/70">{cert.credentialId}</p>
-                  </div>
-                  <ShieldCheck size={40} className="absolute -right-2 -bottom-2 text-white/5 group-hover:text-cyan-400/10 transition-colors duration-500" />
-                </div>
-              )}
             </motion.div>
 
           </div>

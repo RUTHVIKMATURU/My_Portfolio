@@ -30,7 +30,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-gradient glow-text mb-4 uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-5xl font-black text-gradient glow-text mb-4 pb-2 uppercase tracking-tighter">
             Get In Touch
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-6"></div>

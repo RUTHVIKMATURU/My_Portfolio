@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import CertificateCard from './CertificateCard';
 import CertificateModal from './CertificateModal';
+import ExperienceConsole from './ExperienceConsole';
 
 const Certificates = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -124,7 +125,7 @@ const Certificates = () => {
             <CheckCircle2 size={12} />
             Verified Achievements
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-gradient glow-text mb-4 uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-6xl font-black text-gradient glow-text mb-4 pb-2 uppercase tracking-tighter">
             Earning Recognition
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-8"></div>
@@ -171,42 +172,8 @@ const Certificates = () => {
           )}
         </AnimatePresence>
 
-        {/* Leadership Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-24 max-w-4xl mx-auto"
-        >
-          <div className="relative glass-effect rounded-3xl p-1 overflow-hidden group">
-            {/* Animated Border Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 opacity-20 group-hover:opacity-100 animate-gradient-x transition-opacity duration-700" />
-
-            <div className="relative bg-black/90 rounded-[22px] p-8 md:p-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-black uppercase tracking-widest mb-6">
-                <Award size={14} />
-                Leadership Role
-              </div>
-
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
-                Technical Head <br className="hidden md:block" />
-                <span className="text-gradient">ISTE VNRVJIET</span>
-              </h3>
-
-              <p className="text-gray-400 text-lg leading-relaxed mb-8 font-medium">
-                Demonstrated strong organizational and technical support skills by co-organizing workshops
-                on <span className="text-white">Web Development</span>, <span className="text-white">AI</span>, and <span className="text-white">Git/GitHub</span>,
-                ensuring seamless event execution and effective participant guidance.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4 text-xs font-bold text-gray-500 uppercase tracking-widest">
-                <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-cyan-400" /> Mentorship</span>
-                <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-blue-500" /> Event Execution</span>
-                <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> Team Direction</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        {/* Experience Console (Replaces old Leadership Section) */}
+        <ExperienceConsole />
       </div>
     </section>
   );

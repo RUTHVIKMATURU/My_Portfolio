@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import Tilt from 'react-parallax-tilt';
 
 interface Project {
   title: string;
@@ -16,15 +18,33 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent<HTMLDivElement>) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   return (
-    <motion.div
-      layoutId={`card-${project.title}`}
-      onClick={onClick}
-      whileHover={{ y: -10 }}
-      className="glass-effect rounded-2xl p-6 group relative overflow-hidden cursor-pointer border border-cyan-400/20 hover:border-cyan-400/40 transition-colors duration-300"
-    >
+    <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable={false}>
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        layoutId={`card-${project.title}`}
+        onClick={onClick}
+        onMouseMove={handleMouseMove}
+        whileHover={{ y: -10 }}
+        className="glass-effect rounded-2xl p-6 group relative overflow-hidden cursor-pointer border border-cyan-400/20 hover:border-cyan-400/40 transition-colors duration-300"
+      >
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(34, 211, 238, 0.15), transparent 80%)`,
+        }}
       />
 
       <div className="relative z-10 space-y-4">
@@ -64,7 +84,8 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       <motion.div
         className="absolute -bottom-16 -right-16 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"
       />
-    </motion.div>
+      </motion.div>
+    </Tilt>
   );
 };
 

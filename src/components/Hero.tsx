@@ -4,7 +4,7 @@ import { Download, Mail } from 'lucide-react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
-  const roles = ['Software Developer', 'Problem Solver', 'Innovator', 'Competitive Programmer'];
+  const roles = ['Software Developer', 'Problem Solver', 'Innovator', 'AI/ML Engineer'];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
 
@@ -61,12 +61,12 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient glow-text mb-4"
+            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight mb-4"
             animate={{
               textShadow: [
-                '0 0 20px rgba(34, 211, 238, 0.5)',
-                '0 0 40px rgba(34, 211, 238, 0.8)',
-                '0 0 20px rgba(34, 211, 238, 0.5)',
+                '0 0 20px rgba(255, 255, 255, 0.5)',
+                '0 0 40px rgba(255, 255, 255, 0.8)',
+                '0 0 20px rgba(255, 255, 255, 0.5)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}

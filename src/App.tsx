@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import WorkExperience from './components/WorkExperience';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import CodingProfiles from './components/CodingProfiles';
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <WorkExperience />
       <Projects />
       <Certificates />
       <CodingProfiles />

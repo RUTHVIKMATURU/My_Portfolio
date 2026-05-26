@@ -22,6 +22,11 @@ const About = () => {
     { name: 'Tableau', icon: Lightbulb, category: 'Tools' },
     { name: 'Power BI', icon: Lightbulb, category: 'Tools' },
     { name: 'Figma', icon: Lightbulb, category: 'Tools' },
+    { name: 'FastAPI', icon: Wrench, category: 'Frameworks' },
+    { name: 'Firebase', icon: Database, category: 'Databases' },
+    { name: 'HTML', icon: Code2, category: 'Languages' },
+    { name: 'CSS', icon: Code2, category: 'Languages' },
+    { name: 'Bootstrap', icon: Wrench, category: 'Frameworks' },
   ];
 
   return (
@@ -33,7 +38,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4 pb-2">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto"></div>
@@ -72,24 +77,18 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-gray-300 leading-relaxed">
-              A dedicated software developer with a strong foundation in Data Structures, Algorithms,
-              and Object-Oriented Programming using Java and Python. Currently pursuing B.Tech in CSE (AIML)
-              at VNRVJIET with a GPA of 9.26/10.
+              I am an innovative Software Engineer specializing at the intersection of Artificial Intelligence and modern web architecture. Currently pursuing my B.Tech in CSE (AIML) at VNRVJIET, I excel at transforming complex algorithmic concepts into highly scalable, user-centric applications.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
-              I leverage my background in competitive programming and full-stack MERN development to
-              engineer efficient, high-quality solutions. With 1050+ problems solved across multiple
-              platforms and several top rankings in coding contests, I bring both theoretical knowledge
-              and practical experience to every project.
+              I am passionate about designing scalable web architectures and integrating data-driven ML models to build intelligent systems. My objective is to leverage my deep-tech expertise in a fast-paced environment to solve complex engineering challenges and drive impactful innovation.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Drawing on my professional experience as a Competitive Coding Writer at Mercor, I bring a rigorous algorithmic foundation and strong problem-solving capabilities to every project I build.
             </p>
             <div className="flex gap-4 pt-4">
               <div className="glass-effect px-6 py-3 rounded-lg">
                 <p className="text-2xl font-bold text-gradient">9.26</p>
                 <p className="text-sm text-gray-400">GPA</p>
-              </div>
-              <div className="glass-effect px-6 py-3 rounded-lg">
-                <p className="text-2xl font-bold text-gradient">1350+</p>
-                <p className="text-sm text-gray-400">Problems Solved</p>
               </div>
               <div className="glass-effect px-6 py-3 rounded-lg">
                 <p className="text-2xl font-bold text-gradient">5+</p>

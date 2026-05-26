@@ -9,7 +9,6 @@ const CodingProfiles = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +19,6 @@ const CodingProfiles = () => {
         setData(json);
       } catch (err) {
         console.error('Fetch error:', err);
-        setError(true);
       } finally {
         setLoading(false);
       }
@@ -37,8 +35,8 @@ const CodingProfiles = () => {
       icon: Code2,
       username: 'ruthvik0811',
       solved: data?.leetcode?.solved || 350,
-      rating: 2072,
-      maxRating: 2072,
+      rating: 2245,
+      maxRating: 2245,
       rank: data?.leetcode?.rank || 'Top 5%',
       link: 'https://leetcode.com/u/ruthvik0811',
       color: 'from-cyan-400 to-blue-500',
@@ -49,8 +47,8 @@ const CodingProfiles = () => {
       icon: Trophy,
       username: 'ruthvik0811',
       solved: data?.codechef?.solved || 500,
-      rating: data?.codechef?.rating || 1815,
-      maxRating: data?.codechef?.maxRating || 1815,
+      rating: data?.codechef?.rating || 1839,
+      maxRating: data?.codechef?.maxRating || 1839,
       rank: data?.codechef?.stars ? `${data.codechef.stars} Stars` : '4 Stars',
       link: 'https://codechef.com/users/ruthvik0811',
       color: 'from-orange-500 to-red-500',
@@ -61,8 +59,8 @@ const CodingProfiles = () => {
       icon: TrendingUp,
       username: 'ruthvik0811',
       solved: data?.codeforces?.solved || 350,
-      rating: data?.codeforces?.rating || 1415,
-      maxRating: data?.codeforces?.maxRating || 1415,
+      rating: data?.codeforces?.rating || 1499,
+      maxRating: data?.codeforces?.maxRating || 1499,
       rank: data?.codeforces?.rank || 'Specialist',
       link: 'https://codeforces.com/profile/ruthvik0811',
       color: 'from-blue-400 to-blue-600',
@@ -90,7 +88,7 @@ const CodingProfiles = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient glow-text mb-4 pb-2">
             Coding Profiles
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
@@ -181,11 +179,7 @@ const CodingProfiles = () => {
           )}
         </div>
 
-        {error && (
-          <p className="text-center text-red-400 mb-8 flex items-center justify-center gap-2">
-            ⚠️ Live stats unavailable. Showing last recorded data.
-          </p>
-        )}
+
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -197,7 +191,7 @@ const CodingProfiles = () => {
             Contest Rankings
           </h3>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-center p-6 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-lg border border-white/5"
@@ -222,6 +216,24 @@ const CodingProfiles = () => {
             >
               <div className="text-4xl font-bold text-gradient mb-2">11th</div>
               <p className="text-white font-semibold mb-1">Top 100 Coders 2k25</p>
+              <p className="text-gray-400 text-sm">College Level</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-lg border border-white/5"
+            >
+              <div className="text-4xl font-bold text-gradient mb-2">17th</div>
+              <p className="text-white font-semibold mb-1">Smart Interviews Leaderboard</p>
+              <p className="text-gray-400 text-sm">Overall</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-lg border border-white/5"
+            >
+              <div className="text-4xl font-bold text-gradient mb-2">2nd</div>
+              <p className="text-white font-semibold mb-1">Codeverse</p>
               <p className="text-gray-400 text-sm">College Level</p>
             </motion.div>
           </div>
