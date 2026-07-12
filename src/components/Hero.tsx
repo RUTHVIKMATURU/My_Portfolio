@@ -98,7 +98,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.a
-              href="/RuthvikMaturu_23071A66A4_Resume.pdf"
+              href="/Ruthvik_Maturu_VNR.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

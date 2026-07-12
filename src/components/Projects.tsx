@@ -19,6 +19,19 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: 'AI Travel Planner',
+      description: 'Developed an AI-powered travel planning platform with secure authentication, personalized trip management, AI-generated itineraries, budget estimation, weather insights, and destination recommendations. Designed a responsive SaaS-inspired interface for seamless user experience.',
+      tech: ['Next.js', 'Prisma', 'PostgreSQL', 'GenAI'],
+      github: '#',
+      demo: '',
+      features: [
+        'Secure authentication and personalized trip management',
+        'AI-generated itineraries with budget estimation and weather insights',
+        'Responsive SaaS-inspired interface for seamless user experience',
+        'Integration with generative AI models for destination recommendations'
+      ],
+    },
+    {
       title: 'IntelliVision-AI',
       description: 'High-performance AI inference engine leveraging YOLOv8 via ONNX runtime and BLIP transformer models to achieve real-time, low-latency object detection and context-aware scene captioning.',
       tech: ['React', 'FastAPI', 'ONNX', 'MERN', 'AI/ML'],
