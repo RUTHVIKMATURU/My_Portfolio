@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Mail, Clock, CheckCircle2, Circle, Trash2, ArrowLeft } from 'lucide-react';
+import { Mail, Clock, CheckCircle2, ArrowLeft } from 'lucide-react';
 
 interface Message {
   _id: string;

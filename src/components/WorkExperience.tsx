@@ -1,142 +1,130 @@
-import React from 'react';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Tilt from 'react-parallax-tilt';
-import { Briefcase, Award, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { EXPERIENCE_ITEMS } from '../data/portfolioData';
 
 const WorkExperience = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: React.MouseEvent<HTMLDivElement>) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
 
   return (
-    <section id="experience" className="py-20 px-4 relative min-h-[80vh] flex items-center">
-      {/* Background Orbs */}
-      <div className="absolute top-[30%] -right-[10%] w-[30%] h-[40%] bg-emerald-500/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-[20%] -left-[10%] w-[40%] h-[30%] bg-purple-600/10 rounded-full blur-[120px] -z-10" />
-
-      <div className="max-w-6xl mx-auto w-full" ref={ref}>
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5">
+      <div className="max-w-6xl mx-auto" ref={ref}>
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4">
-            <Briefcase size={12} />
-            Professional Journey
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-medium mb-3">
+            <Briefcase size={13} />
+            CAREER & LEADERSHIP JOURNEY
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-tighter">
-            Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-purple-500">Experience</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            A track record of{' '}
+            <span className="text-gradient-cyan">algorithmic growth & impact.</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-emerald-400 to-purple-500 mx-auto rounded-full mb-8"></div>
+          <p className="text-slate-400 text-base sm:text-lg mt-3">
+            From authoring Olympiad-level problems for Mercor to directing technical workshops for 500+ student developers at ISTE.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="perspective-1000"
-        >
-          <Tilt
-            tiltMaxAngleX={3}
-            tiltMaxAngleY={3}
-            glareEnable={false}
-            className="transform-style-3d"
-          >
-            <div
-              onMouseMove={handleMouseMove}
-              className="relative glass-effect rounded-[2.5rem] p-1 overflow-hidden group border border-emerald-500/30"
+        {/* Timeline Container */}
+        <div className="space-y-8 relative">
+          {/* Vertical Timeline Guide Line */}
+          <div className="hidden md:block absolute left-8 top-6 bottom-6 w-px bg-gradient-to-b from-cyan-500/50 via-indigo-500/30 to-transparent" />
+
+          {EXPERIENCE_ITEMS.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="relative md:pl-20"
             >
-              {/* Dynamic Energy Field Border & Glow */}
-              <motion.div
-                className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 z-0"
-                style={{
-                  background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(16, 185, 129, 0.15), transparent 80%)`,
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-purple-500/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+              {/* Timeline Node Dot */}
+              <div className="hidden md:flex absolute left-6 top-7 -translate-x-1/2 w-5 h-5 rounded-full bg-[#0b0f17] border-2 border-cyan-400 items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              </div>
 
-              {/* Inner Content Wrapper */}
-              <div className="relative z-10 bg-black/90 backdrop-blur-3xl rounded-[2.3rem] p-8 md:p-12 transform-style-3d">
-                
-                {/* Left Content Area */}
-                <div className="translate-z-20">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
-                    <div>
-                      <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-2">
-                        Competitive Coding Writer
-                      </h3>
-                      <p className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">
-                        @ Mercor
-                      </p>
-                    </div>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-gray-300 uppercase tracking-widest whitespace-nowrap">
-                      Nov 2025 – Feb 2026
-                    </div>
+              {/* Experience Card */}
+              <div className="p-7 sm:p-9 rounded-2xl bg-[#0b0f17]/90 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 shadow-xl relative overflow-hidden group">
+                {/* Background ambient accent */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.03] rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/[0.06] transition-colors" />
+
+                {/* Top Meta Strip */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                      {item.badge}
+                    </span>
+                    <span className="text-xs font-mono text-slate-500">• {item.type}</span>
                   </div>
 
-                  <div className="space-y-4 mb-8 max-w-4xl">
-                    <p className="text-gray-300 text-lg leading-relaxed flex items-start gap-3">
-                      <ChevronRight className="text-emerald-500 shrink-0 mt-1" size={20} />
-                      Architected and engineered highly complex algorithmic problem statements spanning advanced data structures, graph theory, and dynamic programming.
-                    </p>
-                    <p className="text-gray-300 text-lg leading-relaxed flex items-start gap-3">
-                      <ChevronRight className="text-emerald-500 shrink-0 mt-1" size={20} />
-                      Authored comprehensive editorial explanations and mathematical proofs, breaking down optimal time/space complexity approaches for global competitors.
-                    </p>
-                    <p className="text-gray-300 text-lg leading-relaxed flex items-start gap-3">
-                      <ChevronRight className="text-emerald-500 shrink-0 mt-1" size={20} />
-                      Designed rigorous, edge-case tested suites capable of stress-testing solutions up to 10^5 constraints without TLE or MLE failures.
-                    </p>
+                  <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar size={13} className="text-cyan-400" />
+                      {item.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin size={13} className="text-slate-500" />
+                      {item.location}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Role & Org */}
+                <div className="mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    {item.role}
+                  </h3>
+                  <p className="text-base sm:text-lg font-mono text-cyan-400 font-medium mt-0.5">
+                    @ {item.organization}
+                  </p>
+                </div>
+
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                  {item.description}
+                </p>
+
+                {/* Key Highlights */}
+                <div className="space-y-3 mb-6">
+                  {item.highlights.map((highlight, hIdx) => (
+                    <div key={hIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300">
+                      <ChevronRight size={16} className="text-cyan-400 shrink-0 mt-0.5" />
+                      <span className="leading-relaxed">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Stats & Skills Row */}
+                <div className="pt-5 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] text-slate-300 border border-white/5"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Algorithmic Pedigree Badges */}
-                  <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-transparent border border-emerald-500/20 translate-z-30 inline-block">
-                    <div className="flex items-center gap-2 mb-4 text-xs font-black uppercase tracking-widest text-emerald-400">
-                      <Award size={14} />
-                      Algorithmic Pedigree
+                  {item.stats && (
+                    <div className="flex items-center gap-4 shrink-0 font-mono">
+                      {item.stats.map((st, sIdx) => (
+                        <div key={sIdx} className="text-right">
+                          <span className="text-xs font-bold text-white block">{st.value}</span>
+                          <span className="text-[10px] text-slate-400 uppercase">{st.label}</span>
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex flex-wrap gap-4">
-                      <div className="px-4 py-2 rounded-lg bg-black/60 border border-red-500/30 flex items-center gap-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" className="w-5 h-5 filter invert opacity-80" />
-                        <div>
-                          <p className="text-[10px] text-gray-400 font-bold uppercase">Guardian</p>
-                          <p className="text-sm font-black text-red-400">Max: 2245</p>
-                        </div>
-                      </div>
-                      <div className="px-4 py-2 rounded-lg bg-black/60 border border-purple-500/30 flex items-center gap-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Codechef%28new%29_logo.svg/1200px-Codechef%28new%29_logo.svg.png" alt="CodeChef" className="w-5 h-5 filter invert opacity-80 object-contain" />
-                        <div>
-                          <p className="text-[10px] text-gray-400 font-bold uppercase">4-Star</p>
-                          <p className="text-sm font-black text-purple-400">Max: 1839</p>
-                        </div>
-                      </div>
-                      <div className="px-4 py-2 rounded-lg bg-black/60 border border-cyan-500/30 flex items-center gap-3">
-                         <img src="https://cdn.iconscout.com/icon/free/png-256/code-forces-3628695-3029920.png" alt="Codeforces" className="w-5 h-5 opacity-80" />
-                        <div>
-                          <p className="text-[10px] text-gray-400 font-bold uppercase">Specialist</p>
-                          <p className="text-sm font-black text-cyan-400">Max: 1499</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
+                  )}
                 </div>
               </div>
-            </div>
-          </Tilt>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

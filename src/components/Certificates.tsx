@@ -1,180 +1,89 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { CheckCircle2 } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { ShieldCheck } from 'lucide-react';
 import CertificateCard from './CertificateCard';
 import CertificateModal from './CertificateModal';
 import ExperienceConsole from './ExperienceConsole';
+import { VERIFIED_CERTIFICATIONS, Certificate } from '../data/portfolioData';
+
+const categories = ['All', 'Algorithms', 'Cloud', 'Development'] as const;
 
 const Certificates = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
-  const [filter, setFilter] = useState('All');
+  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const certificates = [
-    {
-      name: 'MERN Stack Development',
-      organization: 'VNRVJIET',
-      date: '2024',
-      description: 'Comprehensive certification covering full-stack web development with MongoDB, Express, React, and Node.js. Focused on building scalable architecture and RESTful APIs.',
-      skills: ['React', 'Node.js', 'Express', 'MongoDB', 'REST API'],
-      credentialId: 'VNR-MERN-2024-102',
-      category: 'Development'
-    },
-    {
-      name: 'Google Cloud Skills Boost',
-      organization: 'Google Cloud',
-      date: '2024',
-      description: 'Domain expertise in cloud computing fundamentals, GCP services, and infrastructure management. Includes hands-on experience with Computing engine and Cloud Storage.',
-      skills: ['GCP', 'Cloud Computing', 'IAM', 'Cloud Storage'],
-      credentialId: 'GC-BOOST-2024-SRV',
-      image: '/certificates/GoogleCloud.png',
-      category: 'Cloud'
-    },
-    {
-      name: '1st Place - Smart Interviews',
-      organization: 'VNRVJIET',
-      date: '2024',
-      description: 'Technical excellence award as the top performer in a comprehensive competitive programming and problem-solving challenge among 500+ participants.',
-      skills: ['Data Structures', 'Algorithms', 'Competitive Programming'],
-      credentialId: 'SI-TOP-2024-VNR',
-      image: '/certificates/smartInterviews.png',
-      category: 'Competition'
-    },
-    {
-      name: '27th Rank - Top 100 Coders 2k24',
-      organization: 'Krithomedh',
-      date: '2024',
-      description: 'Ranked in the top percentiles in a high-stakes college-level coding competition focusing on problem-solving speed and accuracy.',
-      skills: ['Algorithms', 'Java', 'Problem Solving'],
-      credentialId: 'KR-T100-2024',
-      category: 'Competition'
-    },
-    {
-      name: '11th Rank - Top 100 Coders 2k25',
-      organization: 'Krithomedh',
-      date: '2025',
-      description: 'Recognized for algorithm mastery and speed in a competitive field of elite college-level programmers. Improved rank from previous year.',
-      skills: ['DSA', 'Optimization', 'Python'],
-      credentialId: 'KR-T100-2025',
-      category: 'Competition'
-    },
-    {
-      name: '12th Rank - Turing Cup 2k25',
-      organization: 'Inter College Competition',
-      date: '2025',
-      description: 'Competitive performance in a prestigious inter-college programming contest featuring advanced DSA challenges and teamwork.',
-      skills: ['Advanced DSA', 'Team Coordination', 'Optimization'],
-      credentialId: 'TC-2K25-VNR',
-      image: '/certificates/TuringCup2k25.png',
-      category: 'Competition'
-    },
-    {
-      name: '2nd Rank - Codeverse 2k25',
-      organization: 'Turing Hut',
-      date: '2025',
-      description: 'Secured a top-tier podium finish in a rigorous multi-stage coding competition organized by Turing Hut.',
-      skills: ['Programming', 'Logic', 'Databases'],
-      credentialId: 'TH-CV-2025-02',
-      image: '/certificates/Codeverse.jpg',
-      category: 'Competition'
-    },
-    {
-      name: '7th Rank - Coding Contest 2k25',
-      organization: 'Turing Hut',
-      date: '2025',
-      description: 'Distinguished performance in an inter-college level competitive programming event with a focus on graph theory and dynamic programming.',
-      skills: ['Graph Theory', 'Dynamic Programming', 'Logical Reasoning'],
-      credentialId: 'TH-CC-2025-07',
-      category: 'Competition'
-    }
-  ];
-
-  const organizations = ['All', ...Array.from(new Set(certificates.map(c => c.organization)))];
-
-  const filteredCertificates = useMemo(() => {
-    return filter === 'All'
-      ? certificates
-      : certificates.filter(c => c.organization === filter);
-  }, [filter, certificates]);
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  const filteredCerts = useMemo(() => {
+    if (activeCategory === 'All') return VERIFIED_CERTIFICATIONS;
+    return VERIFIED_CERTIFICATIONS.filter((c) => c.category === activeCategory);
+  }, [activeCategory]);
 
   return (
-    <section id="certificates" className="min-h-screen py-20 px-4 relative overflow-hidden">
-      {/* Background Orbs */}
-      <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] bg-cyan-500/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-[20%] -right-[10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] -z-10" />
-
+    <section id="certificates" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto" ref={ref}>
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest mb-4">
-            <CheckCircle2 size={12} />
-            Verified Achievements
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-medium mb-3">
+            <ShieldCheck size={13} />
+            VERIFIED INDUSTRY CREDENTIALS
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-gradient glow-text mb-4 pb-2 uppercase tracking-tighter">
-            Earning Recognition
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            Recognitions &{' '}
+            <span className="text-gradient-cyan">certifications.</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-8"></div>
+          <p className="text-slate-400 text-base sm:text-lg mt-3">
+            Audited certifications across Cloud Architecture, Advanced Data Structures, and Enterprise Web Development.
+          </p>
 
-          {/* Org Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {organizations.map((org) => (
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
+            {categories.map((cat) => (
               <button
-                key={org}
-                onClick={() => setFilter(org)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 border ${filter === org
-                  ? 'bg-cyan-400 text-black border-cyan-400'
-                  : 'bg-white/5 text-gray-400 border-white/10 hover:border-cyan-400/50 hover:text-cyan-400'
-                  }`}
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors border ${
+                  activeCategory === cat
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-semibold'
+                    : 'bg-white/[0.03] text-slate-400 border-white/10 hover:border-white/20 hover:text-white'
+                }`}
               >
-                {org}
+                {cat}
               </button>
             ))}
           </div>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-          {filteredCertificates.map((cert, index) => (
+        {/* Certificate Cards Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {filteredCerts.map((cert, index) => (
             <CertificateCard
-              key={cert.name}
+              key={cert.id}
               cert={cert}
               index={index}
-              onClick={() => setSelectedCertificate(cert)}
+              onClick={() => setSelectedCert(cert)}
             />
           ))}
-        </motion.div>
+        </div>
 
-        <AnimatePresence>
-          {selectedCertificate && (
-            <CertificateModal
-              cert={selectedCertificate}
-              onClose={() => setSelectedCertificate(null)}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Experience Console (Replaces old Leadership Section) */}
+        {/* Experience Console (Mentorship & Workshop Metrics) */}
         <ExperienceConsole />
       </div>
+
+      {/* Modal View */}
+      <AnimatePresence>
+        {selectedCert && (
+          <CertificateModal
+            cert={selectedCert}
+            onClose={() => setSelectedCert(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
