@@ -88,7 +88,7 @@ export const PERSONAL_INFO = {
   email: 'ruthvik0811@gmail.com',
   phone: '+91 8297475089',
   location: 'Hyderabad, Telangana, India',
-  resumePath: '/Ruthvik_Maturu_VNR.pdf',
+  resumePath: '/Ruthvik_Maturu.pdf',
   portfolioUrl: 'https://ruthvikmaturu.vercel.app/',
   github: 'https://github.com/RUTHVIKMATURU',
   linkedin: 'https://www.linkedin.com/in/ruthvik-maturu-86545228b/',
